@@ -1,20 +1,24 @@
-import React, { useState, useEffect} from 'react'
 import { initialNewBoard } from './LogicSide';
+import Cell from './Cell';
+import './Board.css';
 
-function Board(props) {
+const Board = (props) => {
 
-    // cosnt [board, setBoard] = useState([]);
+    const board = props.boardGame.board;
 
-    useEffect(() => {
-        createNewBoard();
-    },[])
-
-    const createNewBoard = () => {
-        initialNewBoard(5, 10);
-    }
 
     return (
-        <div>
+        <div className='board'>
+            {board.map((row, rowIndex) => {
+                console.log('row it: '+ row + ' and rowIndex is: '+rowIndex);
+                return (
+                    <div className='row' key={rowIndex}>
+                    {row.map((cell, colIndex) => {
+                        console.log('cell it: '+ cell + ' and colIndex is: '+colIndex);
+                        return (<Cell key={`${rowIndex}-${colIndex}`} cell={cell}/>);
+                    })}
+                    </div>)
+            })};
             Board
         </div>
     )

@@ -1,10 +1,13 @@
 import React from "react";
-import { ReactDOM } from "react";
 
-function Cell(props) {
+const Cell = (props) => {
+
+    div.addEventListener("contextmenu", (e) => {e.preventDefault()});
+
     return (
-        <div>
-
+        <div className={`cell ${props.cell.revealed ? 'revealed' : ''}`} key={props.key}
+         onClick={handle} >
+            {props.cell.value} 
         </div>
     )
 }

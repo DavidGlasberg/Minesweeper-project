@@ -1,7 +1,7 @@
 const symbolMine = 10;
 // const boardObj = {
-//     size: 10,
-//     mines: 10,
+//     size: 0,
+//     mines: 0,
 //     minesLocations: [],
 //     board: []
 // }
@@ -19,13 +19,14 @@ const initialNewBoard = (sizeBoard, mines) => {
         mines: mines,
         minesLocations: [],
         board: []}
-    // const boardObj = creatNewObj();
     
     createEmptyBoard(boardObj);
     placingMinesRandom(boardObj);
     calculateAdjacentMines(boardObj);
 
     console.log(boardObj);
+    
+    return boardObj;
 }
 const createEmptyBoard = (boardObj) => {
     const newBoard = [];
@@ -46,7 +47,6 @@ const createEmptyBoard = (boardObj) => {
 const placingMinesRandom = (boardObj) => {
     
     while (boardObj.minesLocations.length < boardObj.mines){
-        console.log(boardObj.minesLocations.length + " " + boardObj.mines);
         const randomRow = Math.floor(Math.random() * boardObj.size);
         const randomCol = Math.floor(Math.random() * boardObj.size);
         if (boardObj.board[randomRow][randomCol].value === 0){ // check  if cell is availiable
