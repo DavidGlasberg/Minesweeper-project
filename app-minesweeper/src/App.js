@@ -34,7 +34,7 @@ function App() {
           }
       }
 
-      setBoard({...board});
+      setBoard([...board]);
       return board;
     }
   

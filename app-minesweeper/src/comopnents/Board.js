@@ -4,17 +4,7 @@ import './Board.css';
 const Board = (props) => {
 
 
-    let board = props.boardGame;
-    if (Object.prototype.toString.call(board) == '[object Object]'){
-        const updateBoard = [];
-        for (let i = 0; i < 5; i++){
-            updateBoard.push(board[i]);
-        }
-        board = updateBoard;
-    }
-    console.log('in row.map ==== ');
-    console.log(board);
-
+    const board = props.boardGame;
 
     return (
         <div className='board'>
