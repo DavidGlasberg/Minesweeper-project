@@ -2,12 +2,19 @@ import React from "react";
 
 const Cell = (props) => {
 
-    div.addEventListener("contextmenu", (e) => {e.preventDefault()});
+    const handleLeftClick = e => {
+        console.log('handling left click for open cell');
+    }
+
+    const handleRightClick = e => {
+        e.preventDefault();
+        console.log('handling right click for Flag');
+    }
 
     return (
         <div className={`cell ${props.cell.revealed ? 'revealed' : ''}`} key={props.key}
-         onClick={handle} >
-            {props.cell.value} 
+         onClick={handleLeftClick} onContextMenu={handleRightClick}>
+            {props.cell.revealed ? props.cell.value : ''} 
         </div>
     )
 }

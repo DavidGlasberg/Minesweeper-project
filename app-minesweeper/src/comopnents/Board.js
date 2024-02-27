@@ -4,7 +4,7 @@ import './Board.css';
 
 const Board = (props) => {
 
-    const board = props.boardGame.board;
+    const board = props.boardGame;
 
 
     return (
@@ -15,7 +15,7 @@ const Board = (props) => {
                     <div className='row' key={rowIndex}>
                     {row.map((cell, colIndex) => {
                         console.log('cell it: '+ cell + ' and colIndex is: '+colIndex);
-                        return (<Cell key={`${rowIndex}-${colIndex}`} cell={cell}/>);
+                        return (<Cell key={`${rowIndex}-${colIndex}`} cell={cell} currentBoard={props.currentBoard} setBoard={props.setBoard} handleToReveal={props.handleToReveal} />);
                     })}
                     </div>)
             })};
