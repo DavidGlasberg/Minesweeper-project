@@ -4,6 +4,7 @@ const Cell = (props) => {
 
     const handleLeftClick = e => {
         console.log('handling left click for open cell');
+        props.handleToReveal(props.boardGame, props.cell.row, props.cell.col);
     }
 
     const handleRightClick = e => {

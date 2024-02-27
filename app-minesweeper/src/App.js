@@ -5,7 +5,7 @@ import { initialNewBoard } from './comopnents/LogicSide';
 
 function App() {
   
-  const [currentGameObj, setGameObj] = useState(initialNewBoard(5, 10));
+  const [currentGameObj, setGameObj] = useState(initialNewBoard(5, 5));
   const [currentBoard, setBoard] = useState(currentGameObj.board);
 
     // useEffect(() => {
@@ -16,28 +16,31 @@ function App() {
     // }
 
     const handleToReveal = (board, rowIndex, colIndex) => {
-      console.log(boardObj)
-      const boardObj = currentBoard;
-      const cell = boardObj[rowIndex][colIndex];
+      // console.log('enter handle to reveal: ')
+      // console.log(board)
+
+      // const board = currentBoard;
+      const cell = board[rowIndex][colIndex];
       console.log('clicked value - ' + cell.value);
       if (!cell.revealed){
           cell.revealed = true;
           switch(cell.value){
               case 0:
-                boardObj = revealAdjcent(boardObj, rowIndex, colIndex);
+                board = revealAdjcent(board, rowIndex, colIndex);
                   break;
               case 10:
-                  console.log("game over!"); // To-Do notifier for end the game
+                console.log("game over!"); // To-Do notifier for end the game
                   break;
           }
       }
-      setBoard(...boardObj);
-      return boardObj;
+
+      setBoard({...board});
+      return board;
     }
   
   
     const revealAdjcent = (boardObj, rowIndex, colIndex) => {
-      console.log(`enter to revAdj with (${rowIndex+' '+colIndex})`);
+      // console.log(`enter to revAdj with (${rowIndex+' '+colIndex})`);
       const lowerBound = 0;
       const upperBound = boardObj[0].length; 
       for (let i = rowIndex-1; i <= rowIndex+1; i++){
@@ -64,8 +67,8 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div>Winesweeper</div>
-        <Board boardGame={currentBoard? currentBoard: []} currentBoard={currentBoard} setBoard={setBoard} handleToReveal={handleToReveal} />
+        <div>Minesweeper</div>
+        <Board boardGame={currentBoard? currentBoard: {}} currentBoard={currentBoard} setBoard={setBoard} handleToReveal={handleToReveal} />
         {!currentBoard && <div>Loading board...</div>}
       </header>
     </div>

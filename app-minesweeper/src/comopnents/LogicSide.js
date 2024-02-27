@@ -43,6 +43,7 @@ const createEmptyBoard = (boardObj) => {
         newBoard.push(row);
     }
     boardObj.board = newBoard
+    // console.log('the board after create: ' + newBoard);
 }
 const placingMinesRandom = (boardObj) => {
     
