@@ -21,24 +21,24 @@ function App() {
       const cell = boardArr[rowIndex][colIndex];
       
       if (!cell.revealed){
+        // checkEndGame();
           cell.revealed = true;
           setRevealedCounter(currentRevealedCounter+1);
-          switch(cell.value){
-              case 0:
-                revealAdjcent(boardArr, rowIndex, colIndex); // board = 
-                  break;
-              case 10:
-                console.log("game over!"); // To-Do notifier for end the game
-                  break;
+          if (cell.value == 0){
+            revealAdjcent(boardArr, rowIndex, colIndex); // board = 
+          }
+          else if (cell.value == 10){
+            gameOver(boardArr, rowIndex, colIndex);
           }
       }
-
       setBoard([...boardArr]);
+      
       return boardArr;
     }
   
   
     const revealAdjcent = (boardArr, rowIndex, colIndex) => {
+
       const lowerBound = 0;
       const upperBound = boardArr[0].length; 
       for (let i = rowIndex-1; i <= rowIndex+1; i++){
@@ -48,16 +48,26 @@ function App() {
             if (!cell.revealed){
               if (cell.value === 0){ 
                 cell.revealed = true;
+                // if (cell.flag){
+                //   cell.flag = false;
+                //   setFlagsCounter(currentFlagsCounter-1);
+                // }
                 setRevealedCounter(currentRevealedCounter+1);
                 revealAdjcent(boardArr, i, j);
               }
               else if (cell.value > 0 && cell.value <= 8){ // cell contain number
               cell.revealed = true;
               }
+              else{ return}
+            }
+            if (cell.flag){
+              cell.flag = false;
+              setFlagsCounter(currentFlagsCounter-1);
             }
           }
         }
       }
+      
       return boardArr;
     }
 
@@ -71,10 +81,25 @@ function App() {
         cell.flag = false;
         setFlagsCounter(currentFlagsCounter-1);
       }
-      // setBoard([...boardArr]);
+      // setBoard([...boardArr]); 
+    }
+    const checkEndGame = () => {
+      // all cells revealed
+      // flags and other revealed
+      // click on bomb!
+      
     }
 
-    
+    const gameOver = (boardArr, rowIndex, colIndex) => {
+      currentGameObj.minesLocations.forEach((locMine) => {
+        const cellMine = boardArr[locMine.row][locMine.col];
+        if (!cellMine.flag){
+          cellMine.revealed = true;
+        }
+      })
+      boardArr[rowIndex][colIndex].value = 11; // change value to 11 to symbol that bomb he clicked
+      setBoard([...boardArr]);
+    }
 
   return (
     <div className="App">
@@ -82,6 +107,9 @@ function App() {
         <div>Minesweeper</div>
         <Board boardGame={currentBoard? currentBoard: {}} currentBoard={currentBoard} setBoard={setBoard} handleToReveal={handleToReveal} handleToggleFlag={handleToggleFlag} />
         {!currentBoard && <div>Loading board...</div>}
+        <div>{`flags: ${currentFlagsCounter}`}</div>
+        <div>{`revealed: ${currentRevealedCounter}`}</div>
+
       </header>
     </div>
   );

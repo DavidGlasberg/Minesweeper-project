@@ -139,7 +139,7 @@
     color: #2f5372;
     
   }
-  .cell_revealed_10 {
+  .cell_revealed_10::before {
     width: 30px;
     height: 30px;
     border: 1px solid #ccc;
@@ -151,8 +151,9 @@
     font-weight: bold;
     background-color: #b7adad;
     color: #e60707;
+    content: "\1F4A3";
   }
-  .cell_revealed_10_end{
+  .cell_revealed_11::before{
     width: 30px;
     height: 30px;
     border: 1px solid #ccc;
@@ -162,6 +163,6 @@
     margin: 1px;
     cursor: pointer;
     font-weight: bold;
-    background-color: #b7adad;
-    /* color: #e60707; */
+    background-color: red;
+    content: "\1F4A3";
   }

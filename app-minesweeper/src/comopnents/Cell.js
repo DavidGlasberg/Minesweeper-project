@@ -26,7 +26,12 @@ const Cell = (props) => {
             return 'closed'
         })()}`} key={props.key}
          onClick={handleLeftClick} onContextMenu={handleRightClick}>
-            {props.cell.revealed ? props.cell.value : ''} 
+            {(props.cell.revealed && props.cell.value < 10) ? (props.cell.value) : ''} 
+            {/* {`${(() => {
+                if (props.cell.revealed && props.cell.value < 10){
+                    return props.cell.value
+                }
+            })}`} */}
         </div>
     )
 }
