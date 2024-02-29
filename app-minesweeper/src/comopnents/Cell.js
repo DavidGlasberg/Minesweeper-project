@@ -4,14 +4,16 @@ import './Cell.css';
 const Cell = (props) => {
 
     const handleLeftClick = e => {
-        console.log('handling left click for open cell');
-        props.handleToReveal(props.boardGame, props.cell.row, props.cell.col);
+        if (props.enableGame){
+            props.handleToReveal(props.boardGame, props.cell.row, props.cell.col);
+        }
     }
 
     const handleRightClick = e => {
-        e.preventDefault();
-        console.log('handling right click for Flag');
-        props.handleToggleFlag(props.boardGame, props.cell.row, props.cell.col);
+        if (props.enableGame){
+            e.preventDefault();
+            props.handleToggleFlag(props.boardGame, props.cell.row, props.cell.col);    
+        }
     }
 
     return (
@@ -27,11 +29,6 @@ const Cell = (props) => {
         })()}`} key={props.key}
          onClick={handleLeftClick} onContextMenu={handleRightClick}>
             {(props.cell.revealed && props.cell.value < 10) ? (props.cell.value) : ''} 
-            {/* {`${(() => {
-                if (props.cell.revealed && props.cell.value < 10){
-                    return props.cell.value
-                }
-            })}`} */}
         </div>
     )
 }

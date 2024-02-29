@@ -9,6 +9,7 @@ function App() {
   const [currentBoard, setBoard] = useState(currentGameObj.board);
   const [currentFlagsCounter, setFlagsCounter] = useState(0);
   const [currentRevealedCounter, setRevealedCounter] = useState(0);
+  const [enableGame, setEnableGame] = useState(true);
 
     // useEffect(() => {
     //     createNewBoard();
@@ -84,9 +85,8 @@ function App() {
       // setBoard([...boardArr]); 
     }
     const checkEndGame = () => {
-      // all cells revealed
-      // flags and other revealed
-      // click on bomb!
+      
+      // all cells that contain numbers (0-8) revealed
       
     }
 
@@ -99,13 +99,15 @@ function App() {
       })
       boardArr[rowIndex][colIndex].value = 11; // change value to 11 to symbol that bomb he clicked
       setBoard([...boardArr]);
+      setEnableGame(false);
     }
+
 
   return (
     <div className="App">
       <header className="App-header">
         <div>Minesweeper</div>
-        <Board boardGame={currentBoard? currentBoard: {}} currentBoard={currentBoard} setBoard={setBoard} handleToReveal={handleToReveal} handleToggleFlag={handleToggleFlag} />
+        <Board boardGame={currentBoard? currentBoard: {}} currentBoard={currentBoard} setBoard={setBoard} handleToReveal={handleToReveal} handleToggleFlag={handleToggleFlag} enableGame={enableGame} />
         {!currentBoard && <div>Loading board...</div>}
         <div>{`flags: ${currentFlagsCounter}`}</div>
         <div>{`revealed: ${currentRevealedCounter}`}</div>

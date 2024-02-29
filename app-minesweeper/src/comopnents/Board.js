@@ -14,7 +14,7 @@ const Board = (props) => {
                     <div className='row' key={rowIndex}>
                     {row.map((cell, colIndex) => {
                         console.log('cell it: '+ cell + ' and colIndex is: '+colIndex);
-                        return (<Cell key={`${rowIndex}-${colIndex}`} cell={cell} boardGame={props.boardGame} currentBoard={props.currentBoard} setBoard={props.setBoard} handleToReveal={props.handleToReveal} handleToggleFlag={props.handleToggleFlag} />);
+                        return (<Cell key={`${rowIndex}-${colIndex}`} cell={cell} boardGame={props.boardGame} currentBoard={props.currentBoard} setBoard={props.setBoard} handleToReveal={props.handleToReveal} handleToggleFlag={props.handleToggleFlag} enableGame={props.enableGame} />);
                     })}
                     </div>)
             })};
