@@ -1,4 +1,5 @@
 import React from "react";
+import './Cell.css';
 
 const Cell = (props) => {
 
@@ -13,7 +14,7 @@ const Cell = (props) => {
     }
 
     return (
-        <div className={`cell ${props.cell.revealed ? 'revealed' : ''}`} key={props.key}
+        <div className={`cell_${props.cell.revealed ? 'revealed_'+props.cell.value : 'closed'}`} key={props.key}
          onClick={handleLeftClick} onContextMenu={handleRightClick}>
             {props.cell.revealed ? props.cell.value : ''} 
         </div>

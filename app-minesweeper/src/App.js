@@ -5,7 +5,7 @@ import { initialNewBoard } from './comopnents/LogicSide';
 
 function App() {
   
-  const [currentGameObj, setGameObj] = useState(initialNewBoard(5, 5));
+  const [currentGameObj, setGameObj] = useState(initialNewBoard(9, 10));
   const [currentBoard, setBoard] = useState(currentGameObj.board);
 
     // useEffect(() => {

@@ -8,24 +8,4 @@
     display: flex;
   }
   
-  .cell {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-  }
-  .cell-revealed{
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    background-color: #a70707;
-  }
+  
