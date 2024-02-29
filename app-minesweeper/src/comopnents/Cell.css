@@ -9,6 +9,18 @@
     cursor: pointer;
     background-color: #514f4f;
   }
+  .cell_closed_flag::after {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px;
+    cursor: pointer;
+    background-color: #514f4f;
+    content: "\1F6A9";
+  }
   .cell_revealed_0 {
     width: 30px;
     height: 30px;
@@ -139,4 +151,17 @@
     font-weight: bold;
     background-color: #b7adad;
     color: #e60707;
+  }
+  .cell_revealed_10_end{
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px;
+    cursor: pointer;
+    font-weight: bold;
+    background-color: #b7adad;
+    /* color: #e60707; */
   }

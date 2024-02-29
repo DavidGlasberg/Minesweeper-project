@@ -37,6 +37,7 @@ const createEmptyBoard = (boardObj) => {
                 row: r,
                 col: c,
                 value: 0,
+                flag: false,
                 revealed: false
             });
         }

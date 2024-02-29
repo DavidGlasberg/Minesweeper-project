@@ -7,6 +7,8 @@ function App() {
   
   const [currentGameObj, setGameObj] = useState(initialNewBoard(9, 10));
   const [currentBoard, setBoard] = useState(currentGameObj.board);
+  const [currentFlagsCounter, setFlagsCounter] = useState(0);
+  const [currentRevealedCounter, setRevealedCounter] = useState(0);
 
     // useEffect(() => {
     //     createNewBoard();
@@ -15,18 +17,15 @@ function App() {
     //     setBoard();
     // }
 
-    const handleToReveal = (board, rowIndex, colIndex) => {
-      // console.log('enter handle to reveal: ')
-      // console.log(board)
-
-      // const board = currentBoard;
-      const cell = board[rowIndex][colIndex];
-      console.log('clicked value - ' + cell.value);
+    const handleToReveal = (boardArr, rowIndex, colIndex) => {
+      const cell = boardArr[rowIndex][colIndex];
+      
       if (!cell.revealed){
           cell.revealed = true;
+          setRevealedCounter(currentRevealedCounter+1);
           switch(cell.value){
               case 0:
-                board = revealAdjcent(board, rowIndex, colIndex);
+                revealAdjcent(boardArr, rowIndex, colIndex); // board = 
                   break;
               case 10:
                 console.log("game over!"); // To-Do notifier for end the game
@@ -34,23 +33,23 @@ function App() {
           }
       }
 
-      setBoard([...board]);
-      return board;
+      setBoard([...boardArr]);
+      return boardArr;
     }
   
   
-    const revealAdjcent = (boardObj, rowIndex, colIndex) => {
-      // console.log(`enter to revAdj with (${rowIndex+' '+colIndex})`);
+    const revealAdjcent = (boardArr, rowIndex, colIndex) => {
       const lowerBound = 0;
-      const upperBound = boardObj[0].length; 
+      const upperBound = boardArr[0].length; 
       for (let i = rowIndex-1; i <= rowIndex+1; i++){
         for (let j = colIndex-1; j <= colIndex+1; j++){
           if (i >= lowerBound && i < upperBound && j >= lowerBound && j < upperBound){
-            const cell = boardObj[i][j];
+            const cell = boardArr[i][j];
             if (!cell.revealed){
               if (cell.value === 0){ 
                 cell.revealed = true;
-                revealAdjcent(boardObj, i, j);
+                setRevealedCounter(currentRevealedCounter+1);
+                revealAdjcent(boardArr, i, j);
               }
               else if (cell.value > 0 && cell.value <= 8){ // cell contain number
               cell.revealed = true;
@@ -59,7 +58,20 @@ function App() {
           }
         }
       }
-      return boardObj;
+      return boardArr;
+    }
+
+    const handleToggleFlag = (boardArr, rowIndex, colIndex) => {
+      const cell = boardArr[rowIndex][colIndex];
+      if (!cell.flag){
+        cell.flag = true;
+        setFlagsCounter(currentFlagsCounter+1);
+      }
+      else{
+        cell.flag = false;
+        setFlagsCounter(currentFlagsCounter-1);
+      }
+      // setBoard([...boardArr]);
     }
 
     
@@ -68,7 +80,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>Minesweeper</div>
-        <Board boardGame={currentBoard? currentBoard: {}} currentBoard={currentBoard} setBoard={setBoard} handleToReveal={handleToReveal} />
+        <Board boardGame={currentBoard? currentBoard: {}} currentBoard={currentBoard} setBoard={setBoard} handleToReveal={handleToReveal} handleToggleFlag={handleToggleFlag} />
         {!currentBoard && <div>Loading board...</div>}
       </header>
     </div>
