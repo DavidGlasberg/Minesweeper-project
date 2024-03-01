@@ -8,6 +8,7 @@ const Board = (props) => {
 
     return (
         <div className='board'>
+            {`nonMinesHidden: ${props.nonMinesHiddenCounter}`}
             {board.map((row, rowIndex) => {
                 console.log('row it: '+ row + ' and rowIndex is: '+rowIndex);
                 return (

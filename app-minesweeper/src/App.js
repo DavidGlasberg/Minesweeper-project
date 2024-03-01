@@ -8,8 +8,9 @@ function App() {
   const [currentGameObj, setGameObj] = useState(initialNewBoard(9, 10));
   const [currentBoard, setBoard] = useState(currentGameObj.board);
   const [currentFlagsCounter, setFlagsCounter] = useState(0);
-  const [currentRevealedCounter, setRevealedCounter] = useState(0);
+  const [nonMinesHiddenCounter, setNonMinesHiddenCounter] = useState(9*9-10); 
   const [enableGame, setEnableGame] = useState(true);
+  const [gameOver, setGameOver] = useState(false);
 
     // useEffect(() => {
     //     createNewBoard();
@@ -19,26 +20,31 @@ function App() {
     // }
 
     const handleToReveal = (boardArr, rowIndex, colIndex) => {
+      let newNonMinesCounter = nonMinesHiddenCounter;
       const cell = boardArr[rowIndex][colIndex];
-      
-      if (!cell.revealed){
-        // checkEndGame();
-          cell.revealed = true;
-          setRevealedCounter(currentRevealedCounter+1);
-          if (cell.value == 0){
-            revealAdjcent(boardArr, rowIndex, colIndex); // board = 
-          }
-          else if (cell.value == 10){
-            gameOver(boardArr, rowIndex, colIndex);
-          }
+      if (!cell.revealed && !gameOver && !cell.flag){
+        
+        if (cell.value == 10){ // is mine!
+          setGameOver(true);
+          g(boardArr, rowIndex, colIndex);
+          return;
+        }
+        newNonMinesCounter--;
+        cell.revealed = true;
+        if (cell.value == 0){
+          newNonMinesCounter = revealAdjcent(boardArr, rowIndex, colIndex, newNonMinesCounter); // board = 
+        }
+          // setNonMinesHiddenCounter(nonMinesHiddenCounter-1);
       }
       setBoard([...boardArr]);
+      setNonMinesHiddenCounter(newNonMinesCounter);
+      
       
       return boardArr;
     }
   
   
-    const revealAdjcent = (boardArr, rowIndex, colIndex) => {
+    const revealAdjcent = (boardArr, rowIndex, colIndex, newNonMinesCounter) => {
 
       const lowerBound = 0;
       const upperBound = boardArr[0].length; 
@@ -48,16 +54,18 @@ function App() {
             const cell = boardArr[i][j];
             if (!cell.revealed){
               if (cell.value === 0){ 
+                newNonMinesCounter--;
                 cell.revealed = true;
                 // if (cell.flag){
                 //   cell.flag = false;
                 //   setFlagsCounter(currentFlagsCounter-1);
                 // }
-                setRevealedCounter(currentRevealedCounter+1);
-                revealAdjcent(boardArr, i, j);
+                // setNonMinesHiddenCounter(nonMinesHiddenCounter-1);
+                newNonMinesCounter = revealAdjcent(boardArr, i, j, newNonMinesCounter);
               }
               else if (cell.value > 0 && cell.value <= 8){ // cell contain number
-              cell.revealed = true;
+                newNonMinesCounter--;
+                cell.revealed = true;
               }
               else{ return}
             }
@@ -69,7 +77,7 @@ function App() {
         }
       }
       
-      return boardArr;
+      return newNonMinesCounter;
     }
 
     const handleToggleFlag = (boardArr, rowIndex, colIndex) => {
@@ -85,12 +93,12 @@ function App() {
       // setBoard([...boardArr]); 
     }
     const checkEndGame = () => {
-      
+
       // all cells that contain numbers (0-8) revealed
       
     }
 
-    const gameOver = (boardArr, rowIndex, colIndex) => {
+    const g = (boardArr, rowIndex, colIndex) => {
       currentGameObj.minesLocations.forEach((locMine) => {
         const cellMine = boardArr[locMine.row][locMine.col];
         if (!cellMine.flag){
@@ -107,10 +115,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <div>Minesweeper</div>
-        <Board boardGame={currentBoard? currentBoard: {}} currentBoard={currentBoard} setBoard={setBoard} handleToReveal={handleToReveal} handleToggleFlag={handleToggleFlag} enableGame={enableGame} />
+        <Board boardGame={currentBoard? currentBoard: {}} currentBoard={currentBoard} setBoard={setBoard} handleToReveal={handleToReveal} handleToggleFlag={handleToggleFlag} enableGame={enableGame} nonMinesHiddenCounter={nonMinesHiddenCounter} />
         {!currentBoard && <div>Loading board...</div>}
         <div>{`flags: ${currentFlagsCounter}`}</div>
-        <div>{`revealed: ${currentRevealedCounter}`}</div>
+        {/* <div>{`revealed: ${currentRevealedCounter}`}</div> */}
 
       </header>
     </div>
