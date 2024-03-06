@@ -8,7 +8,6 @@ const Board = (props) => {
 
     return (
         <div className='board'>
-            {`nonMinesHidden: ${props.nonMinesHiddenCounter}`}
             {board.map((row, rowIndex) => {
                 console.log('row it: '+ row + ' and rowIndex is: '+rowIndex);
                 return (
@@ -18,8 +17,7 @@ const Board = (props) => {
                         return (<Cell key={`${rowIndex}-${colIndex}`} cell={cell} boardGame={props.boardGame} currentBoard={props.currentBoard} setBoard={props.setBoard} handleToReveal={props.handleToReveal} handleToggleFlag={props.handleToggleFlag} enableGame={props.enableGame} />);
                     })}
                     </div>)
-            })};
-            Board
+            })}
         </div>
     )
 }

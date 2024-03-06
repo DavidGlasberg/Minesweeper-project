@@ -2,19 +2,25 @@ import React, {useEffect,useState} from 'react';
 import './App.css';
 import Board from './comopnents/Board';
 import { initialNewBoard } from './comopnents/LogicSide';
+import GameOver from './comopnents/GameOver';
+import Buttons from './comopnents/buttons';
 
 function App() {
   
   const [currentGameObj, setGameObj] = useState(initialNewBoard(9, 10));
   const [currentBoard, setBoard] = useState(currentGameObj.board);
   const [currentFlagsCounter, setFlagsCounter] = useState(0);
-  const [nonMinesHiddenCounter, setNonMinesHiddenCounter] = useState(9*9-10); 
+  const [nonMinesHiddenCounter, setNonMinesHiddenCounter] = useState(null); 
   const [enableGame, setEnableGame] = useState(true);
   const [gameOver, setGameOver] = useState(false);
 
-    // useEffect(() => {
-    //     createNewBoard();
-    // },[])
+    useEffect(() => {
+        setBoard(currentGameObj.board);
+        setNonMinesHiddenCounter(currentGameObj.size * currentGameObj.size - currentGameObj.mines)
+        setEnableGame(true);
+        setGameOver(false);
+        console.log('changed size the board')
+    },[currentGameObj])
     // const createNewBoard = () => {
     //     setBoard();
     // }
@@ -71,7 +77,6 @@ function App() {
             }
             if (cell.flag){
               cell.flag = false;
-              setFlagsCounter(currentFlagsCounter-1);
             }
           }
         }
@@ -84,18 +89,11 @@ function App() {
       const cell = boardArr[rowIndex][colIndex];
       if (!cell.flag){
         cell.flag = true;
-        setFlagsCounter(currentFlagsCounter+1);
       }
       else{
         cell.flag = false;
-        setFlagsCounter(currentFlagsCounter-1);
       }
-      // setBoard([...boardArr]); 
-    }
-    const checkEndGame = () => {
-
-      // all cells that contain numbers (0-8) revealed
-      
+      setBoard([...boardArr]); 
     }
 
     const g = (boardArr, rowIndex, colIndex) => {
@@ -107,22 +105,24 @@ function App() {
       })
       boardArr[rowIndex][colIndex].value = 11; // change value to 11 to symbol that bomb he clicked
       setBoard([...boardArr]);
-      setEnableGame(false);
+      // setEnableGame(false);
     }
 
 
   return (
     <div className="App">
       <header className="App-header">
+        <Buttons setGameObj={setGameObj} currentGameObj={currentGameObj} />
         <div>Minesweeper</div>
+        {(nonMinesHiddenCounter==0 || gameOver) && <GameOver gameOver={gameOver} setEnableGame={setEnableGame}/>}
         <Board boardGame={currentBoard? currentBoard: {}} currentBoard={currentBoard} setBoard={setBoard} handleToReveal={handleToReveal} handleToggleFlag={handleToggleFlag} enableGame={enableGame} nonMinesHiddenCounter={nonMinesHiddenCounter} />
         {!currentBoard && <div>Loading board...</div>}
-        <div>{`flags: ${currentFlagsCounter}`}</div>
+        
         {/* <div>{`revealed: ${currentRevealedCounter}`}</div> */}
 
       </header>
     </div>
-  );
+  )
 }
 
 export default App;
