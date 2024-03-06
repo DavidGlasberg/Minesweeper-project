@@ -10,7 +10,7 @@ const GameOver = (props) => {
                 if (props.gameOver){
                     return 'Ooops! GAME-OVER!'
                 }
-                return 'END-GAME! You Winner!'
+                return 'You Winner!'
             })()}`}
         </div>
     )

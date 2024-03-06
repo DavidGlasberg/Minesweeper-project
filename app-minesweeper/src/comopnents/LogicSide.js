@@ -5,13 +5,6 @@ const symbolMine = 10;
 //     minesLocations: [],
 //     board: []
 // }
-const creatNewObj = () => {
-    return {
-        size: 0,
-        mines: 0,
-        minesLocations: [],
-        board: []}
-}
 
 const initialNewBoard = (sizeBoard, mines) => {
     const boardObj = {

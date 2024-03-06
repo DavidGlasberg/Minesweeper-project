@@ -22,6 +22,9 @@ const Cell = (props) => {
             if (props.cell.revealed){
                 return 'revealed_'+props.cell.value
             }
+            else if (props.cell.flag && (props.cell.value < 10) && !props.enableGame){
+                return 'closed_incorrect_flag'
+            }
             else if (props.cell.flag){
                 return 'closed_flag'
             }

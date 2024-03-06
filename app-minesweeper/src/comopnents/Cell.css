@@ -9,6 +9,17 @@
     cursor: pointer;
     background-color: #514f4f;
   }
+  .cell_closed:hover {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #110202;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px;
+    cursor: pointer;
+    background-color: #514f4f;
+  }
   .cell_closed_flag::after {
     width: 30px;
     height: 30px;
@@ -19,6 +30,18 @@
     margin: 1px;
     cursor: pointer;
     background-color: #514f4f;
+    content: "\1F6A9";
+  }
+  .cell_closed_incorrect_flag::after {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1px;
+    cursor: pointer;
+    background-color: #8f2020;
     content: "\1F6A9";
   }
   .cell_revealed_0 {
