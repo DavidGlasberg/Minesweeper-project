@@ -7,9 +7,8 @@ import Buttons from './comopnents/buttons';
 
 function App() {
   
-  const [currentGameObj, setGameObj] = useState(initialNewBoard(9, 10));
-  const [currentBoard, setBoard] = useState(currentGameObj.board);
-  const [currentFlagsCounter, setFlagsCounter] = useState(0);
+  const [currentGameObj, setGameObj] = useState(initialNewBoard(9, 10)); 
+  const [currentBoard, setBoard] = useState(currentGameObj.board); 
   const [nonMinesHiddenCounter, setNonMinesHiddenCounter] = useState(null); 
   const [enableGame, setEnableGame] = useState(true);
   const [gameOver, setGameOver] = useState(false);
@@ -93,7 +92,7 @@ function App() {
           cellMine.revealed = true;
         }
       })
-      boardArr[rowIndex][colIndex].value = 11; // change value to 11 to symbol that bomb he clicked
+      boardArr[rowIndex][colIndex].value = 11; // changes value to 11 to symbol that mine clicked
       setBoard([...boardArr]);
     }
 
