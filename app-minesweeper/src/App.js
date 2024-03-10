@@ -1,4 +1,3 @@
-// import React, { useEffect, useState } from 'react';
 import './App.css';
 import Board from './comopnents/Board';
 import GameOver from './comopnents/GameOver';
@@ -6,6 +5,7 @@ import ControlButtons from './comopnents/ControlButtons';
 import { useGameFlow } from './hooks/useGameFlow';
 
 function App() {
+
   const { currentGameObj,currentBoard, gameOver, handleToReveal, handleToggleFlag, startNewGame} = useGameFlow();
 
   return (
@@ -21,3 +21,4 @@ function App() {
 }
 
 export default App;
+

@@ -6,26 +6,25 @@ const symbolMine = 10;
 //     board: []
 // }
 
-export const initialNewBoard = (sizeBoard, mines) => {
-    const boardObj = {
+export const initialNewGame = (sizeBoard, minesAmount) => {
+    const gameObj = {
         size: sizeBoard,
-        mines: mines,
+        mines: minesAmount,
         minesLocations: [],
         board: []}
     
-    createEmptyBoard(boardObj);
-    placingMinesRandom(boardObj);
-    calculateAdjacentMines(boardObj);
-
-    console.log(boardObj);
+    createEmptyBoard(gameObj);
+    placingMinesRandom(gameObj);
+    calculateAdjacentMines(gameObj);
     
-    return boardObj;
+    return gameObj;
 }
-const createEmptyBoard = (boardObj) => {
+
+const createEmptyBoard = (gameObj) => {
     const newBoard = [];
-    for (let r = 0; r < boardObj.size; r++){ //rows
+    for (let r = 0; r < gameObj.size; r++){ //rows
         const row = [];
-        for (let c = 0; c < boardObj.size; c++){
+        for (let c = 0; c < gameObj.size; c++){
             row.push({
                 row: r,
                 col: c,
@@ -36,37 +35,37 @@ const createEmptyBoard = (boardObj) => {
         }
         newBoard.push(row);
     }
-    boardObj.board = newBoard
-    // console.log('the board after create: ' + newBoard);
+    gameObj.board = newBoard
 }
-const placingMinesRandom = (boardObj) => {
+
+const placingMinesRandom = (gameObj) => {
     
-    while (boardObj.minesLocations.length < boardObj.mines){
-        const randomRow = Math.floor(Math.random() * boardObj.size);
-        const randomCol = Math.floor(Math.random() * boardObj.size);
-        if (boardObj.board[randomRow][randomCol].value === 0){ // check  if cell is availiable
-            boardObj.board[randomRow][randomCol].value = 10; // 10 is symbol to mines value
-            boardObj.minesLocations.push({ //Entering the location into memory
+    while (gameObj.minesLocations.length < gameObj.mines){
+        const randomRow = Math.floor(Math.random() * gameObj.size);
+        const randomCol = Math.floor(Math.random() * gameObj.size);
+        if (gameObj.board[randomRow][randomCol].value === 0){ // check  if cell is availiable
+            gameObj.board[randomRow][randomCol].value = 10; // 10 is symbol to mines value
+            gameObj.minesLocations.push({ //Entering the location into memory
                 row: randomRow,
                 col: randomCol
             });
         }
     }
-    return boardObj;
+    return gameObj;
 }
-const calculateAdjacentMines = (boardObj) => {
-    let upperBound = boardObj.size;
+const calculateAdjacentMines = (gameObj) => {
+    let upperBound = gameObj.size;
     let lowerBound = 0;
-    boardObj.minesLocations.forEach(mine => {
+    gameObj.minesLocations.forEach(mine => {
         for (let r = mine.row - 1; r <= mine.row+1; r++){
             for (let c = mine.col - 1; c <= mine.col+1; c++){
                 if (r >= lowerBound && r < upperBound && c >= lowerBound && c < upperBound){
-                    if (boardObj.board[r][c].value !== symbolMine){
-                        boardObj.board[r][c].value++;
+                    if (gameObj.board[r][c].value !== symbolMine){
+                        gameObj.board[r][c].value++;
                     }
                 }
             }
         }
     });
-    return boardObj;
+    return gameObj;
 }

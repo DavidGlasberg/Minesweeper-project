@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { initialNewBoard } from "../LogicSide";
+import { initialNewGame } from "../LogicSide";
 
 export const useGameFlow = () => {
 
-    const [currentGameObj, setGameObj] = useState(initialNewBoard(9, 10));
+    const [currentGameObj, setGameObj] = useState(initialNewGame(9, 10));
     const [currentNonMinesHidden, setNonMinesHidden] = useState(currentGameObj.size * currentGameObj.size - currentGameObj.mines);
     const [gameOver, setGameOver] = useState(false);
 
@@ -20,7 +20,7 @@ export const useGameFlow = () => {
     }
 
     const startNewGame = (sizeBoard, minesAmount) => {
-        setGameObj(initialNewBoard(sizeBoard, minesAmount));
+        setGameObj(initialNewGame(sizeBoard, minesAmount));
         setGameOver(false);
         setNonMinesHidden(sizeBoard * sizeBoard - minesAmount);
     }
@@ -45,8 +45,8 @@ export const useGameFlow = () => {
             setBoard([...currentBoard]);
         }
     }
-
-    const revealAdjcent = (rowIndex, colIndex) => {
+// recursive func to reveals all adjcent cells that empty (value===0) until cells contain number
+    const revealAdjcent = (rowIndex, colIndex) => { 
         if (!disableGame) {
             const lowerBound = 0;
             const upperBound = currentBoard[0].length;
@@ -66,8 +66,8 @@ export const useGameFlow = () => {
                             }
                             else { return }
                         }
-                        if (cell.flag) {
-                            cell.flag = false;
+                        if (cell.flag) { 
+                            cell.flag = false; 
                         }
                     }
                 }
@@ -75,6 +75,7 @@ export const useGameFlow = () => {
         }
     }
 
+// toggle flag
     const handleToggleFlag = (rowIndex, colIndex) => {
         if (!disableGame) {
             const cell = currentBoard[rowIndex][colIndex];
@@ -88,6 +89,7 @@ export const useGameFlow = () => {
         }
     }
 
+    // That function reveals all the mines in board
     const revealsRemainingMines = (rowIndex, colIndex) => {
         currentGameObj.minesLocations.forEach((locMine) => {
             const cellMine = currentBoard[locMine.row][locMine.col];
@@ -104,7 +106,6 @@ export const useGameFlow = () => {
         gameOver,
         handleToReveal,
         handleToggleFlag,
-        // nonMinesHiddenCounter: currentNonMinesHidden,
         currentBoard,
         startNewGame
     }

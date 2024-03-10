@@ -5,7 +5,6 @@ const ControlButtons = (props) => {
     return (
         <div className="control-buttons">
             <button id="reset" onClick={() => {
-                // props.setGameObj(initialNewBoard(props.currentGameObj.size, props.currentGameObj.mines))
                 props.startNewGame(props.currentGameObj.size, props.currentGameObj.mines)
             }}>Reset</button>
             <button id="beginners" onClick={() => {
