@@ -1,191 +1,191 @@
+
 .cell_closed {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    background-color: #514f4f;
-  }
-  .cell_closed:hover {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #110202;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    background-color: #514f4f;
-  }
-  .cell_closed_flag::after {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    background-color: #514f4f;
-    content: "\1F6A9";
-  }
-  .cell_closed_incorrect_flag::after {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    background-color: #8f2020;
-    content: "\1F6A9";
-  }
-  .cell_revealed_0 {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    background-color: #b7adad;
-    content-visibility: hidden;
-  }
-  .cell_revealed_1 {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    background-color: #b7adad;
-    font-weight: bold;
-    color: blue;
-  }
-  .cell_revealed_2 {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #b7adad;
-    color: green;
-  }
-  .cell_revealed_3 {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #b7adad;
-    color: red;
-  }
-  
-  .cell_revealed_4 {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #b7adad;
-    color: rgb(4, 3, 82);
-  }
-  .cell_revealed_5 {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #b7adad;
-    color: #4c0303;
-  }
-  .cell_revealed_6 {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #b7adad;
-    color: #044103;
-  }
-  .cell_revealed_7 {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #b7adad;
-    color: #4f0338;
-  }
-  .cell_revealed_8 {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #b7adad;
-    color: #2f5372;
-    
-  }
-  .cell_revealed_10::before {
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: #b7adad;
-    color: #e60707;
-    content: "\1F4A3";
-  }
-  .cell_revealed_11::before{
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 1px;
-    cursor: pointer;
-    font-weight: bold;
-    background-color: red;
-    content: "\1F4A3";
-  }
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  background-color: #514f4f;
+}
+.cell_closed:hover {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #110202;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  background-color: #514f4f;
+}
+.cell_closed_flag::after {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  background-color: #514f4f;
+  content: "\1F6A9";
+}
+.cell_closed_incorrect_flag::after {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  background-color: #8f2020;
+  content: "\1F6A9";
+}
+.cell_revealed_0 {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  background-color: #b7adad;
+  content-visibility: hidden;
+}
+.cell_revealed_1 {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  background-color: #b7adad;
+  font-weight: bold;
+  color: blue;
+}
+.cell_revealed_2 {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #b7adad;
+  color: green;
+}
+.cell_revealed_3 {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #b7adad;
+  color: red;
+}
+
+.cell_revealed_4 {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #b7adad;
+  color: rgb(4, 3, 82);
+}
+.cell_revealed_5 {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #b7adad;
+  color: #4c0303;
+}
+.cell_revealed_6 {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #b7adad;
+  color: #044103;
+}
+.cell_revealed_7 {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #b7adad;
+  color: #4f0338;
+}
+.cell_revealed_8 {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #b7adad;
+  color: #2f5372;
+}
+.cell_revealed_10::before {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: #b7adad;
+  color: #e60707;
+  content: "\1F4A3";
+}
+.cell_revealed_11::before {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1px;
+  cursor: pointer;
+  font-weight: bold;
+  background-color: red;
+  content: "\1F4A3";
+}

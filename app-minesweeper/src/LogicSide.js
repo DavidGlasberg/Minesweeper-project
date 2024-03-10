@@ -1,12 +1,12 @@
 const symbolMine = 10;
-// const boardObj = {
+// const gameObj = {
 //     size: 0,
 //     mines: 0,
 //     minesLocations: [],
 //     board: []
 // }
 
-const initialNewBoard = (sizeBoard, mines) => {
+export const initialNewBoard = (sizeBoard, mines) => {
     const boardObj = {
         size: sizeBoard,
         mines: mines,
@@ -70,5 +70,3 @@ const calculateAdjacentMines = (boardObj) => {
     });
     return boardObj;
 }
-
-exports.initialNewBoard = initialNewBoard;

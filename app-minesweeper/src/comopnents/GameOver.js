@@ -2,16 +2,13 @@ import React from "react";
 
 const GameOver = (props) => {
 
-
+    // const messages = {
+    //     gameover: 'GAME-OVER!',
+    //     succses: "You Win!"
+    // }
     return (
         <div className="game-over">
-            {`${(() => {
-                {props.setEnableGame(false)}
-                if (props.gameOver){
-                    return 'Ooops! GAME-OVER!'
-                }
-                return 'You Winner!'
-            })()}`}
+            { props.gameOver ? 'Game-Over! You lose' : 'You Win!' }
         </div>
     )
 }
